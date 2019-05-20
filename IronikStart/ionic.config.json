@@ -1,5 +1,7 @@
 {
-  "name": "IronikStart",
-  "integrations": {},
+  "name": "ionic-training",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

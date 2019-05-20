@@ -1,59 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-import { Vegetable } from '../../class/vegetable';
-import { Fruit } from '../../class/fruit';
+import {Component, OnInit} from '@angular/core';
+import {Vegetable} from '../../class/vegetable';
+import { Fruit } from 'src/app/class/fruit';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit{
-  name :any="Romain";
-  vegetable:Vegetable[]=[];
-  fruit:Fruit[]=[];
-  newVegetable:Vegetable;
+export class HomePage implements OnInit {
+  title: string;
+  vegetables: Vegetable[]=[];
+  fruits: Fruit[]=[];
+  newVegetable: Vegetable;
   newFruit: Fruit;
 
-  constructor(){
-    this.loadVegeList();
+  constructor() {
+    this.title = 'Listes et items';
     this.loadFruitList();
-    this.newVegetable = new Vegetable ('',0);
-    this.newFruit= new Fruit('',0);
+    this.loadVegeList();
+    this.newVegetable = new Vegetable('', 0);
+    this.newFruit= new Fruit('', 0);
   }
-  ngOnInit():void{}
-  loadVegeList(){
-    this.vegetable.push(new Vegetable('Poireaux',14.99));
-    this.vegetable.push(new Vegetable('Carrotte',4.99));
-    this.vegetable.push(new Vegetable('Patatte',1.99));
-    this.vegetable.push(new Vegetable('Poivron',8.99));
-    this.vegetable.push(new Vegetable('Oignon rouge',5.99));
-    this.vegetable.push(new Vegetable('petit poids',8.99));
-    this.vegetable.push(new Vegetable('Mogette',17.99));
-    this.vegetable.push(new Vegetable('Fenouille',12.99));
-    this.vegetable.push(new Vegetable('Tomate',7.99));
-    this.vegetable.push(new Vegetable('Piment Espelette',9.99));
+  ngOnInit(): void {
+
   }
-  loadFruitList(){
-    this.fruit.push(new Fruit('Citron',5.99));
-    this.fruit.push(new Fruit('Fraises',16.99));
-    this.fruit.push(new Fruit('Grenades',12.99));
-    this.fruit.push(new Fruit('Mangue',14.99));
-    this.fruit.push(new Fruit('Ananas',7.99));
-    this.fruit.push(new Fruit('pommes',16.99));
-    this.fruit.push(new Fruit('cerise',19.99));
+  loadVegeList() {
+
+    this.vegetables.push(new Vegetable('Poireau', 12.9));
+    this.vegetables.push(new Vegetable('Carotte', 10.20));
+    this.vegetables.push(new Vegetable('Chou', 2.9));
+    this.vegetables.push(new Vegetable('Haricots verts', 6.90));
   }
-  addVegetable(){
-    this.vegetable.push(this.newVegetable);
-    this.newVegetable = new Vegetable ('',0);
+  loadFruitList() {
+    this.fruits.push(new Fruit('Citron', 10.20));
+    this.fruits.push(new Fruit('Orange', 7.99));
+    this.fruits.push(new Fruit('Ananas', 5.60));
+    this.fruits.push(new Fruit('Noix de coco', 14.58));
   }
-  deleteVegetable(i:number){
-    this.vegetable.splice(i,1);
+
+  addVegetable() {
+    this.vegetables.push(this.newVegetable);
+    this.newVegetable = new Vegetable('', 0);
   }
-  addFruit(){
-    this.fruit.push(this.newFruit);
-    this.newFruit= new Fruit('',0);
+
+  deleteVegetable(i: number) {
+    this.vegetables.splice(i, 1);
   }
-  deleteFruit(i:number){
-    this.fruit.splice(i,1);
+  addFruit() {
+    this.fruits.push(this.newFruit);
+    this.newFruit = new Fruit('', 0);
+    }
+
+  deleteFruit(i: number) {
+    this.fruits.splice(i, 1);
   }
 }

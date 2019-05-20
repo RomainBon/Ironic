@@ -1,90 +1,94 @@
- <ion-menu side="start" menuId="menu-id" contentId="content1" type="overlay">
-   <ion-header>
-     <ion-toolbar color="primary">
-       <ion-title>Menu</ion-title>
-     </ion-toolbar>
-     <ion-content id="content1">
-       <ion-list>
-         <ion-item *ngFor="let page of pages">
-           <!-- <ion-button (click) ="selectPage(page)" color="light">{{paga?title}}</ion-button> -->
-         </ion-item>
-       </ion-list>
-     </ion-content>
-   </ion-header>
- </ion-menu>
- <ion-header>
-  <ion-toolbar color="dark">
-    <ion-buttons slot="start">
-    <ion-button>
-      <ion-menu-button color="light">Home</ion-menu-button>
-    </ion-button>
-    </ion-buttons>
-    <ion-title>
-      Ironic Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button color="light"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Présentation
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <div class="ion-padding">
-    <ion-text color="primary"><h2>{{name}}</h2></ion-text>
+    <div class="ion-padding">
+        <!-- UN ELEMENT DE IONIC commence par ion- et on peut appliquer une couleur
+        des variables de thème scss
+        On trouve quasiment pour chacun, une série de classes
+        css et d'attributs appropriés-->
+        <ion-text color="primary"><h2>{{title}}</h2></ion-text>
+        <!-- DEBUT LISTE -->
+        <ion-list class="ion-text-lg-center" lines="none">
 
-    <ion-list class="ion-text-lg-center" lines="full" >
-      <ion-list-header>
-        <ion-label color="tertiary">Fruit & Légumes</ion-label>
-      </ion-list-header>
-      <ion-item-group>
-        <ion-item-divider>
-          <ion-label color="secondary">Légumes</ion-label>
-        </ion-item-divider>
-        <ion-item-sliding *ngFor="let elem of vegetable; index as i" >
-          <ion-item>
-            <ion-label>{{elem.name}}</ion-label>
-            <ion-note>{{elem.price | currency:'EUR'}}</ion-note>
-          </ion-item>
-          <ion-item-options>
-            <ion-item-option (click)="deleteVegetable(i)"><ion-icon name="close-circle-outline"></ion-icon></ion-item-option>
-          </ion-item-options>
-        </ion-item-sliding>
+            <ion-list-header color="secondary">
+                <ion-label>Fruits et légumes</ion-label>
+            </ion-list-header>
 
-        <ion-item-divider>
-          <ion-label color="secondary">Fruit</ion-label>
-        </ion-item-divider>
-        <ion-item-sliding *ngFor="let elem of fruit; index as i" >
-          <ion-item>
-            <ion-label>{{elem.name}}</ion-label>
-            <ion-note>{{elem.price | currency:'EUR'}}</ion-note>
-          </ion-item>
-          <ion-item-options>
-            <ion-item-option (click)="deleteFruit(i)"><ion-icon name="close-circle-outline"></ion-icon></ion-item-option>
-          </ion-item-options>
-        </ion-item-sliding>
-      </ion-item-group>
-      <ion-item>
-        <ion-list-header>
-          <ion-label color="tertiary">Légumes</ion-label>
-        </ion-list-header>
-        <ion-label position="floating">Nom : </ion-label>
-        <ion-input name="vegetable" [(ngModel)]="newVegetable.name" required minlenght="3" maxlenght="15" autocorrect spallchack type="text" clearInput></ion-input>
-        
-        <ion-label position="floating">Price</ion-label>
-        <ion-input name="vegetable" [(ngModel)]="newVegetable.price" required minlenght="3" maxlenght="15" autocorrect spallchack type="number" clearInput></ion-input>
-        
-        <ion-button slot="end" (click)="addVegetable()">Ajouter</ion-button>
-      </ion-item>
-      <ion-item>
-          <ion-list-header>
-            <ion-label color="tertiary">Fruit</ion-label>
-          </ion-list-header>
+            <ion-item-group>
+                <ion-item-divider color="tertiary">
+                    <ion-label>Légumes</ion-label>
+                </ion-item-divider>
+                <ion-item-sliding *ngFor="let elem of vegetables; index as i">
+                    <ion-item>
+                        <ion-label>{{elem.name}}</ion-label>
+                        <ion-note>{{elem.price | currency: 'EUR'}}</ion-note>
+                        <ion-item-options>
+                            <ion-item-option color="light">
+                                <ion-button (click)="deleteVegetable(i)">
+                                    <ion-icon slot="icon-only" name="nuclear"></ion-icon>
+                                </ion-button>
+                            </ion-item-option>
+                        </ion-item-options>
+                    </ion-item>
+                </ion-item-sliding>
 
-          <ion-label position="floating">Nom : </ion-label>
-          <ion-input name="fruit" [(ngModel)]="newFruit.name" required minlenght="3" maxlenght="15" autocorrect spallchack type="text" clearInput></ion-input>
-          
-          <ion-label position="floating">Price</ion-label>
-          <ion-input name="fruit" [(ngModel)]="newFruit.price" required minlenght="3" maxlenght="15" autocorrect spallchack type="number" clearInput></ion-input>
-          
-          <ion-button slot="end" (click)="addFruit()">Ajouter</ion-button>
-        </ion-item>
-    </ion-list>
-  </div>
+            <ion-item-divider color="tertiary">
+                <ion-label>Fruits</ion-label>
+            </ion-item-divider>
+            <ion-item-sliding *ngFor="let elem of fruits; index as i">
+                <ion-item>
+                    <ion-label>{{elem.name}}</ion-label>
+                    <ion-note>{{elem.price | currency: 'EUR'}}</ion-note>
+                    <ion-item-options>
+                        <ion-item-option color="light">
+                            <ion-button (click)="deleteFruit(i)">
+                                <ion-icon slot="icon-only" name="nuclear"></ion-icon>
+                            </ion-button>
+                        </ion-item-option>
+                    </ion-item-options>
+                </ion-item>
+            </ion-item-sliding>
+        </ion-item-group>
+            <ion-item>
+                <ion-item-divider color="primary">
+                    <ion-label>Légumes</ion-label>
+                </ion-item-divider>
+                <!-- CHAMP NAME -->
+                <ion-label position="floating">Nom :</ion-label>
+                <ion-input name="name" [(ngModel)]="newVegetable.name" required autocorrect spellcheck type="text"
+                           #name="ngModel" clearInput></ion-input>
+                <ion-note color="danger" *ngIf="name.touched && name.errors">Nom est obligatoire</ion-note>
+                <!-- CHAMP PRICE -->
+                <ion-label position="floating">Prix :</ion-label>
+                <ion-input name="price" [(ngModel)]="newVegetable.price" required minlength="3"
+                           maxlength="15" autocorrect spellcheck type="text" clearInput></ion-input>
+                <!-- VALIDATION -->
+                <ion-button (click)="addVegetable()">Ajouter</ion-button>
+            </ion-item>
+            <ion-item>
+                <ion-item-divider color="primary">
+                    <ion-label>Fruit</ion-label>
+                </ion-item-divider>
+                <!-- CHAMP NAME -->
+                <ion-label position="floating">Nom :</ion-label>
+                <ion-input name="name" [(ngModel)]="newFruit.name" required autocorrect spellcheck type="text"
+                           #name="ngModel" clearInput></ion-input>
+                <ion-note color="danger" *ngIf="name.touched && name.errors">Nom est obligatoire</ion-note>
+                <!-- CHAMP PRICE -->
+                <ion-label position="floating">Prix :</ion-label>
+                <ion-input name="price" [(ngModel)]="newFruit.price" required minlength="3"
+                           maxlength="15" autocorrect spellcheck type="text" clearInput></ion-input>
+                <!-- VALIDATION -->
+                <ion-button (click)="addFruit()">Ajouter</ion-button>
+            </ion-item>
+        </ion-list>
+    </div>
 </ion-content>
