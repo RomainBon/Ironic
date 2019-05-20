@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Vegetable } from '../class/vegetable';
-import { Fruit } from '../class/fruit';
+import { Vegetable } from '../../class/vegetable';
+import { Fruit } from '../../class/fruit';
 
 @Component({
   selector: 'app-home',
@@ -12,11 +12,13 @@ export class HomePage implements OnInit{
   vegetable:Vegetable[]=[];
   fruit:Fruit[]=[];
   newVegetable:Vegetable;
+  newFruit: Fruit;
 
   constructor(){
     this.loadVegeList();
     this.loadFruitList();
     this.newVegetable = new Vegetable ('',0);
+    this.newFruit= new Fruit('',0);
   }
   ngOnInit():void{}
   loadVegeList(){
@@ -42,5 +44,16 @@ export class HomePage implements OnInit{
   }
   addVegetable(){
     this.vegetable.push(this.newVegetable);
+    this.newVegetable = new Vegetable ('',0);
+  }
+  deleteVegetable(i:number){
+    this.vegetable.splice(i,1);
+  }
+  addFruit(){
+    this.fruit.push(this.newFruit);
+    this.newFruit= new Fruit('',0);
+  }
+  deleteFruit(i:number){
+    this.fruit.splice(i,1);
   }
 }

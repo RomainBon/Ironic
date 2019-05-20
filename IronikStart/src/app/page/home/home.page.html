@@ -1,0 +1,90 @@
+ <ion-menu side="start" menuId="menu-id" contentId="content1" type="overlay">
+   <ion-header>
+     <ion-toolbar color="primary">
+       <ion-title>Menu</ion-title>
+     </ion-toolbar>
+     <ion-content id="content1">
+       <ion-list>
+         <ion-item *ngFor="let page of pages">
+           <!-- <ion-button (click) ="selectPage(page)" color="light">{{paga?title}}</ion-button> -->
+         </ion-item>
+       </ion-list>
+     </ion-content>
+   </ion-header>
+ </ion-menu>
+ <ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+    <ion-button>
+      <ion-menu-button color="light">Home</ion-menu-button>
+    </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Ironic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-text color="primary"><h2>{{name}}</h2></ion-text>
+
+    <ion-list class="ion-text-lg-center" lines="full" >
+      <ion-list-header>
+        <ion-label color="tertiary">Fruit & Légumes</ion-label>
+      </ion-list-header>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label color="secondary">Légumes</ion-label>
+        </ion-item-divider>
+        <ion-item-sliding *ngFor="let elem of vegetable; index as i" >
+          <ion-item>
+            <ion-label>{{elem.name}}</ion-label>
+            <ion-note>{{elem.price | currency:'EUR'}}</ion-note>
+          </ion-item>
+          <ion-item-options>
+            <ion-item-option (click)="deleteVegetable(i)"><ion-icon name="close-circle-outline"></ion-icon></ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+
+        <ion-item-divider>
+          <ion-label color="secondary">Fruit</ion-label>
+        </ion-item-divider>
+        <ion-item-sliding *ngFor="let elem of fruit; index as i" >
+          <ion-item>
+            <ion-label>{{elem.name}}</ion-label>
+            <ion-note>{{elem.price | currency:'EUR'}}</ion-note>
+          </ion-item>
+          <ion-item-options>
+            <ion-item-option (click)="deleteFruit(i)"><ion-icon name="close-circle-outline"></ion-icon></ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-item-group>
+      <ion-item>
+        <ion-list-header>
+          <ion-label color="tertiary">Légumes</ion-label>
+        </ion-list-header>
+        <ion-label position="floating">Nom : </ion-label>
+        <ion-input name="vegetable" [(ngModel)]="newVegetable.name" required minlenght="3" maxlenght="15" autocorrect spallchack type="text" clearInput></ion-input>
+        
+        <ion-label position="floating">Price</ion-label>
+        <ion-input name="vegetable" [(ngModel)]="newVegetable.price" required minlenght="3" maxlenght="15" autocorrect spallchack type="number" clearInput></ion-input>
+        
+        <ion-button slot="end" (click)="addVegetable()">Ajouter</ion-button>
+      </ion-item>
+      <ion-item>
+          <ion-list-header>
+            <ion-label color="tertiary">Fruit</ion-label>
+          </ion-list-header>
+
+          <ion-label position="floating">Nom : </ion-label>
+          <ion-input name="fruit" [(ngModel)]="newFruit.name" required minlenght="3" maxlenght="15" autocorrect spallchack type="text" clearInput></ion-input>
+          
+          <ion-label position="floating">Price</ion-label>
+          <ion-input name="fruit" [(ngModel)]="newFruit.price" required minlenght="3" maxlenght="15" autocorrect spallchack type="number" clearInput></ion-input>
+          
+          <ion-button slot="end" (click)="addFruit()">Ajouter</ion-button>
+        </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
