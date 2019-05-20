@@ -1,0 +1,57 @@
+ <ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ironic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+     <ion-text color="primary"><h2>{{name}}</h2></ion-text>
+    <ion-list class="ion-text-lg-center" lines="full" >
+    <ion-list-header>
+      <ion-label>Fruit & Légumes</ion-label>
+    </ion-list-header>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label color="secondary">Fruits</ion-label>
+        </ion-item-divider>
+        <ion-item-sliding>
+            <ion-item *ngFor="let elem of fruit" >
+           <ion-label>{{elem.name}}</ion-label>
+           <ion-note>{{elem.price | currency:'EUR'}}</ion-note>
+         </ion-item>
+         <ion-item-options side="start">
+           <ion-item-option>Gauche</ion-item-option>
+         </ion-item-options>
+         <ion-item-options>
+             <ion-item-option>Droite</ion-item-option>
+           </ion-item-options>
+         </ion-item-sliding>
+
+        <ion-item-divider>
+            <ion-label color="secondary">Légumes</ion-label>
+        </ion-item-divider>
+          <ion-item-sliding>
+             <ion-item *ngFor="let elem of vegetable" >
+            <ion-label>{{elem.name}}</ion-label>
+            <ion-note>{{elem.price | currency:'EUR'}}</ion-note>
+          </ion-item>
+          <ion-item-options side="start">
+            <ion-item-option>Gauche</ion-item-option>
+          </ion-item-options>
+          <ion-item-options>
+              <ion-item-option>Droite</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+         
+      </ion-item-group>
+      <ion-item>
+        <ion-label position="floating">Ajouter un légume</ion-label>
+        <ion-input name="vegetable" [(ngModel)]="newVegetable.name" required minlenght="3" maxlenght="15" autocorrect spallchack type="text" clearInput></ion-input>
+        <ion-button slot="end" (click)="addVegetable()">Ajouter</ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
